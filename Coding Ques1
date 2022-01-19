@@ -3,70 +3,75 @@ import java.util.Scanner;
 import java.util.Arrays;
 public class Ques1 {
 
+	private static Scanner sc;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the number of x: ");
-		int x = sc.nextInt();
+		sc = new Scanner(System.in);
 		
-		switch (x) {
+		System.out.println("1. Accept elements of an array");
+		System.out.println("2. Display elements of an array");
+		System.out.println("3. Search the element within array given by the user");
+		System.out.println("4. Sort the array by using any sort method");
+		System.out.println("Enter the number of option: ");
+		int option = sc.nextInt();
+		
+		switch (option) {
 		case 1:	
-			int list [] = new int [5];
-			System.out.println("Enter 5 array element: ");
-			for(int a = 0; a < list.length; a++)
-				list[a] = sc.nextInt();
-		break;
-	
+			int[] array = readArray();
+			break;
 		case 2:
+			printElement();
+			break; 	
+		case 3: 
+			checkElement();
+			break;
+		case 4: 
+			sortArray();
+			break;
+		}
+	}
 	
-			int[] array = {2, 4, 6, 8, 10};
-			System.out.println("Display elements of array");
-	        for (int element: array) {
-	            System.out.println(element);
-	        }
-		break;
-			
-		case 3:
-			int i,n,search,flag=0;
-			 System.out.println("Enter the number of elements:") ;
-			 n = sc.nextInt();
-			 int[] a = new int[n];
-			 
-			     System.out.println("Enter the elements") ;
-			     for(i=0;i<n;i++)
-			     {
-			         a[i] = sc.nextInt();
-			     }
-			 
-			 System.out.println("Enter the element to be seached");
-			 search = sc.nextInt();
-			    
-			     /*Perform search operation*/
-			     for(i=0;i<=n;i++)
-			     {
-			         if(a[i]==search)
-			         {
-			             System.out.println("Element "+search+" found at "+i+" position");
-			             flag=1;
-			             break;
-			         }
-			     }
-			     if(flag==0)
-			     {
-			         System.out.println("Element "+search+" not found");
-			     }
-		break;
+	public static int[] readArray() {
+		System.out.print("Enter the number of the array: ");
+		int num = sc.nextInt();
+		int [] input = new int[num];
 		
-		case 4:
-			int [] num = new int [] {20, 50, 12, 33, 22};  
-			Arrays.sort(num);   
-			System.out.println("Elements of array in ascending order: ");  
-			for (int j = 0; j < num.length; j++)   
-			{       
-				System.out.println(num[j]);   
-			}   
-		break;
+		System.out.print("Enter the elements: ");
+		for (int j=0; j<input.length; j++)
+			input[j] = sc.nextInt();
+        return input; 
 	}
-	}
+		
+	public static void printElement() {
+		int[] array2 = readArray();
+		for(int i=0; i<array2.length; i++)
+		System.out.print(array2[i] + " ");
+	}  
+		
+	public static void checkElement() {
+		int[] array3 = readArray();
+		System.out.print("Enter the element you want to search: ");
+		int search = sc.nextInt();
+		int sameNo = 0;
 
+		for(int k = 0; k <array3.length; k++) {
+		    if(array3[k] == search) {		    	
+		        sameNo = 1;
+		        break;
+		    }
+		}
+		if(sameNo == 1)			
+		    System.out.println("Search found");
+		else
+		    System.out.println("Search Not Found");
+	}   
+		
+	public static void sortArray() {
+		int[] array4 = readArray();  
+		Arrays.sort(array4);   
+		System.out.println("Elements of array in ascending order: ");  
+		for (int m = 0; m < array4.length; m++) {     
+			System.out.println(array4[m]);   
+		}   
+	}
 }
